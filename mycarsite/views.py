@@ -1,20 +1,29 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 
+from cart.forms import CartAddCarForm
 from mycarsite.models import *
 
 
-def home(request):
-    cars = Cars.objects.all()
-    return render(request, 'index.html', {'cars': cars})
+class HomeView(ListView):
+    model = Cars
+    context_object_name = 'cars'
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['add_form'] = CartAddCarForm(initial={'update': True})
+        return context
 
 
-def about(request):
-    return render(request, 'about.html')
+class ReservationsView(ListView):
+    model = Cars
+    template_name = 'reservations.html'
 
-
-def services(request):
-    return render(request, 'services.html')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['cars'] = Cars.objects.filter(id=1)
+        return context
 
 
 def pricing(request):

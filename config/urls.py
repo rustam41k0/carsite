@@ -3,11 +3,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from config import settings
-from mycarsite.views import *
 
 urlpatterns = [
-    path('', include('mycarsite.urls')),
     path('admin/', admin.site.urls),
+    path('reservations/', include('cart.urls')),
+    path('', include('mycarsite.urls')),
 ]
 
 if settings.DEBUG:

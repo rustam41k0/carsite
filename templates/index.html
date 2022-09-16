@@ -10,17 +10,7 @@
             <div class="col-lg-8 ftco-animate">
                 <div class="text w-100 text-center mb-md-5 pb-md-5">
                     <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
-                    <p style="font-size: 18px;">A small river named Duden flows by their place and supplies it with the
-                        necessary regelialia. It is a paradisematic country, in which roasted parts</p>
-                    <a href="https://vimeo.com/45830194"
-                       class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="ion-ios-play"></span>
-                        </div>
-                        <div class="heading-title ml-5">
-                            <span>Easy steps for renting a car</span>
-                        </div>
-                    </a>
+                    <p style="font-size: 18px;">On this site you can rent a car for you and your activities</p>
                 </div>
             </div>
         </div>
@@ -116,22 +106,22 @@
             <div class="col-md-12">
                 <div class="carousel-car owl-carousel">
                     {% for car in cars %}
-                        <div class="item">
-                            <div class="car-wrap rounded ftco-animate">
-                                <div class="img rounded d-flex align-items-end"
-                                     style="background-image: url({{ car.image.url }});">
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end"
+                                 style="background-image: url({{ car.image.url }});">
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="#">{{ car.name }}</a></h2>
+                                <div class="d-flex mb-3">
+                                    <span class="cat">{{ car.category }}</span>
+                                    <p class="price ml-auto">${{ car.price }} <span>/day</span></p>
                                 </div>
-                                <div class="text">
-                                    <h2 class="mb-0"><a href="#">{{ car.name }}</a></h2>
-                                    <div class="d-flex mb-3">
-                                        <span class="cat">{{ car.category }}</span>
-                                        <p class="price ml-auto">${{ car.price }} <span>/day</span></p>
-                                    </div>
-                                    <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book
-                                        now</a> <a href="#" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                                </div>
+                                <p class="d-flex mb-0 d-block"><a href="{% url 'reservations' %}" class="btn btn-primary py-2 mr-1">Book
+                                    now</a> <a href="{{ car.get_absolute_url }}" class="btn btn-secondary py-2 ml-1">Details</a></p>
                             </div>
                         </div>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
