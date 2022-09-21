@@ -23,7 +23,7 @@
             <div class="col-md-12	featured-top">
                 <div class="row no-gutters">
                     <div class="col-md-4 d-flex align-items-center">
-                        <form action="#" class="request-form ftco-animate bg-primary">
+                        <form action="{% url 'car' %}" class="request-form ftco-animate bg-primary">
                             <h2>Make your trip</h2>
                             <div class="form-group">
                                 <label for="" class="label">Pick-up location</label>
@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                            <p><a href="{% url 'car' %}" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
                         </div>
                     </div>
                 </div>
@@ -117,8 +117,15 @@
                                     <span class="cat">{{ car.category }}</span>
                                     <p class="price ml-auto">${{ car.price }} <span>/day</span></p>
                                 </div>
-                                <p class="d-flex mb-0 d-block"><a href="{% url 'reservations' %}" class="btn btn-primary py-2 mr-1">Book
-                                    now</a> <a href="{{ car.get_absolute_url }}" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                                <p class="d-flex mb-0 d-block">
+                                <form action="{% url 'cart_add' car.id %}" method='post'>
+                                      {{ add_form }}
+                                      {% csrf_token %}
+                                    <input class="btn btn-primary py-2 mr-1" type="submit" value="Book now">
+                                <a href="{{ car.get_absolute_url }}" class="btn btn-secondary py-2 ml-1">Details</a>
+                                </form>
+
+                                </p>
                             </div>
                         </div>
                     </div>

@@ -20,17 +20,16 @@ class Cart(object):
         """
         Перебираем товары в корзине и получаем товары из базы данных.
         """
-        product_ids = self.cart.keys()
+        cars_ids = self.cart.keys()
         # получаем товары и добавляем их в корзину
-        products = Cars.objects.filter(id__in=product_ids)
+        cars = Cars.objects.filter(id__in=cars_ids)
 
         cart = self.cart.copy()
-        for product in products:
-            cart[str(product.id)]['product'] = product
-
+        for car in cars:
+            cart[str(car.id)]['car'] = car
+        print(cart.values())
         for item in cart.values():
-            item['price'] = Decimal(item['price'])
-            item['total_price'] = item['price']
+            # item['id'] = Decimal(item['id'])
             yield item
 
     def __len__(self):
@@ -39,26 +38,27 @@ class Cart(object):
         """
         return len(self.cart.values())
 
-    def add(self, product, quantity=1, update_quantity=False):
+    def add(self, car, quantity=1, update_quantity=False):
         """
         Добавляем товар в корзину или обновляем его количество.
         """
-        product_id = str(product.id)
-        if product_id not in self.cart:
-            self.cart[product_id] = {'price': str(product.price)}
+        print(car, '- car')
+        car_id = str(car.id)
+        if car_id not in self.cart:
+            self.cart[car_id] = {}
         self.save()
 
     def save(self):
         # сохраняем товар
         self.session.modified = True
 
-    def remove(self, product):
+    def remove(self, car):
         """
         Удаляем товар
         """
-        product_id = str(product.id)
-        if product_id in self.cart:
-            del self.cart[product_id]
+        car_id = str(car.id)
+        if car_id in self.cart:
+            del self.cart[car_id]
             self.save()
 
     def get_total_price(self):

@@ -20,22 +20,34 @@
 <section class="ftco-section contact-section">
     <div class="container">
         <div class="row d-flex mb-5 contact-info">
-            {% for car in cars %}
+
             <div class="col-md-4">
                 <div class="row mb-5">
                     <div class="col-md-12">
                         <h3>Your chosen cars:</h3>
+                        {% for product in cart %}
+                        {% with car=product.car %}
                         <div class="border w-100 p-4 rounded mb-2 d-flex">
                             <p><img src="{{ car.image.url }}" width="215" height="140" alt=""><br>
-                            Mercedes SLS AMG<br>
-                            {{ car.price }} $/day</p>
+                                {{ car.name }}<br>
+                                {{ car.price }} $/day
+                                <form action="{% url 'cart_remove' car.id %}" method='post'>
+                                    {{ add_form }}
+                                    {% csrf_token %}
+                                    <input class="btn btn-primary py-2 mr-1" type="submit" value="Remove">
+                                </form>
+                            </p>
                         </div>
+                        {% endwith %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            {% endfor %}
+
             <div class="col-md-8 block-9 mb-md-5">
                 <form action="#" class="bg-light p-5 contact-form">
+
+
                     <h5>Leave your personal information and we will contact you!</h5>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Your Name">
@@ -48,6 +60,7 @@
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
 </section>
