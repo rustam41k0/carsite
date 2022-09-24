@@ -16,28 +16,15 @@ class HomeView(ListView):
         return context
 
 
-class ReservationsView(ListView):
+class PriceView(ListView):
     model = Cars
-    template_name = 'reservations.html'
+    context_object_name = 'cars'
+    template_name = 'pricing.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context['cars'] = Cars.objects.filter(id=1)
+        context['add_form'] = CartAddCarForm()
         return context
-
-
-def pricing(request):
-    return render(request, 'pricing.html')
-
-
-class PriceView(ListView):
-    model = Cars
-    template_name = 'pricing.html'
-
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     context = super().get_context_data()
-    #     context['cars'] = Cars.objects.all()
-    #     return context
 
 
 class CarsView(ListView):

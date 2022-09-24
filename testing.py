@@ -34,3 +34,11 @@
 #
 # x = car.keys()
 # print(x)
+# a = [[] for i in range(3)]
+# print(a)
+choosen_cars = ['mers', 'mazda', 'hundai']
+cars = ''
+for car in choosen_cars:
+    cars += car + '\n'
+
+print(cars)

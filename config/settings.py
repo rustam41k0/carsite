@@ -135,7 +135,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CART_SESSION_ID = 'cart'
 
 EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 EMAIL_USER = 'sharipov.rustam18@yandex.ru'
 EMAIL_PASSWORD = 'vpdtpkpjwvgnofnv'
 EMAIL_USE_SSL = True

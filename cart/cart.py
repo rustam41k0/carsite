@@ -6,9 +6,7 @@ from mycarsite.models import Cars
 class Cart(object):
 
     def __init__(self, request):
-        """
-        Инициализация корзины
-        """
+        # Инициализация корзины
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
@@ -17,9 +15,7 @@ class Cart(object):
         self.cart = cart
 
     def __iter__(self):
-        """
-        Перебираем товары в корзине и получаем товары из базы данных.
-        """
+        # Перебираем товары в корзине и получаем товары из базы данных.
         cars_ids = self.cart.keys()
         # получаем товары и добавляем их в корзину
         cars = Cars.objects.filter(id__in=cars_ids)
@@ -27,22 +23,13 @@ class Cart(object):
         cart = self.cart.copy()
         for car in cars:
             cart[str(car.id)]['car'] = car
-        print(cart.values())
         for item in cart.values():
-            # item['id'] = Decimal(item['id'])
             yield item
 
-    def __len__(self):
-        """
-        Считаем сколько товаров в корзине
-        """
-        return len(self.cart.values())
+    # def __len__(self):
+    #     return len(self.cart.values())
 
-    def add(self, car, quantity=1, update_quantity=False):
-        """
-        Добавляем товар в корзину или обновляем его количество.
-        """
-        print(car, '- car')
+    def add(self, car):
         car_id = str(car.id)
         if car_id not in self.cart:
             self.cart[car_id] = {}
@@ -53,9 +40,7 @@ class Cart(object):
         self.session.modified = True
 
     def remove(self, car):
-        """
-        Удаляем товар
-        """
+        # Удаляем товар
         car_id = str(car.id)
         if car_id in self.cart:
             del self.cart[car_id]
