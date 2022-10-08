@@ -26,9 +26,6 @@ class Cart(object):
         for item in cart.values():
             yield item
 
-    # def __len__(self):
-    #     return len(self.cart.values())
-
     def add(self, car):
         car_id = str(car.id)
         if car_id not in self.cart:

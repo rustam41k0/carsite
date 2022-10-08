@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block reservations %}
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');"
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/static/images/bg_2.jpg');"
          data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
@@ -24,7 +24,7 @@
             <div class="col-md-4">
                 <div class="row mb-5">
                     <div class="col-md-12">
-                        {% if cart %}
+                        {% if cart_length %}
                             <h3>Your chosen cars:</h3>
                             {% for product in cart %}
                             {% with car=product.car %}

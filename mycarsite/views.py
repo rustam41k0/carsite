@@ -13,6 +13,7 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['add_form'] = CartAddCarForm()
+        context['recent_posts'] = Posts.objects.order_by('-time_create')[:3]
         return context
 
 
