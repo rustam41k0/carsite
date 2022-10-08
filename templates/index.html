@@ -39,7 +39,7 @@
                                         <div class="icon d-flex align-items-center justify-content-center"><span
                                                 class="flaticon-route"></span></div>
                                         <div class="text w-100">
-                                            <h3 class="heading mb-2">Choose Your Pickup Location</h3>
+                                            <h3 class="heading mb-2">Choose any of our beautiful cars</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -280,54 +280,24 @@
             </div>
         </div>
         <div class="row d-flex">
+            {% for post in recent_posts %}
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20"
-                       style="background-image: url('/static/images/image_1.jpg');">
+                    <a href="{% url 'blog_single' post.slug %}" class="block-20"
+                       style="background-image: url({{ post.image.url }});">
                     </a>
                     <div class="text pt-4">
                         <div class="meta mb-3">
-                            <div><a href="#">Oct. 29, 2019</a></div>
-                            <div><a href="#">Admin</a></div>
-                            <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                            <div><a href="{% url 'blog_single' post.slug %}">{{ post.time_create }}</a></div>
+                            <div><a href="{% url 'blog_single' post.slug %}">{{ post.author }}</a></div>
+                            <div><a href="{% url 'blog_single' post.slug %}" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                         </div>
-                        <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                        <p><a href="#" class="btn btn-primary">Read more</a></p>
+                        <h3 class="heading mt-2"><a href="#">{{ post.main_title }}</a></h3>
+                        <p><a href="{% url 'blog_single' post.slug %}" class="btn btn-primary">Read more</a></p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20"
-                       style="background-image: url('/static/images/image_2.jpg');">
-                    </a>
-                    <div class="text pt-4">
-                        <div class="meta mb-3">
-                            <div><a href="#">Oct. 29, 2019</a></div>
-                            <div><a href="#">Admin</a></div>
-                            <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                        <p><a href="#" class="btn btn-primary">Read more</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 d-flex ftco-animate">
-                <div class="blog-entry">
-                    <a href="blog-single.html" class="block-20"
-                       style="background-image: url('/static/images/image_3.jpg');">
-                    </a>
-                    <div class="text pt-4">
-                        <div class="meta mb-3">
-                            <div><a href="#">Oct. 29, 2019</a></div>
-                            <div><a href="#">Admin</a></div>
-                            <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                        </div>
-                        <h3 class="heading mt-2"><a href="#">Why Lead Generation is Key for Business Growth</a></h3>
-                        <p><a href="#" class="btn btn-primary">Read more</a></p>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
