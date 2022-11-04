@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models import ForeignKey, ManyToManyField, PositiveIntegerField, ImageField
+from django.db.models import ForeignKey, ManyToManyField
 from django.urls import reverse
 
 

@@ -30,7 +30,7 @@ def cart_detail(request):
     for car in cart:
         cars.append(car['car'].name)
     cart_length = len(cart.cart.values())
-    
+
     if request.method == "GET":
         contact_form = UserContactForm()
 
@@ -48,7 +48,7 @@ def cart_detail(request):
             return redirect('reservations')
     else:
         return HttpResponse('Неверный запрос.')
- # sharipov.rustam18@yandex.ru
+
     return render(request, 'reservations.html', {'cart': cart,
                                                  'contact_form': contact_form,
                                                  'cart_length': cart_length})

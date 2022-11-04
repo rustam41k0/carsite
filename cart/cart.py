@@ -10,14 +10,14 @@ class Cart(object):
         self.session = request.session
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
-            # сохраняем ПУСТУЮ корзину в сессии
+            # Сохраняем ПУСТУЮ корзину в сессии
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
     def __iter__(self):
         # Перебираем товары в корзине и получаем товары из базы данных.
         cars_ids = self.cart.keys()
-        # получаем товары и добавляем их в корзину
+        # Получаем товары и добавляем их в корзину
         cars = Cars.objects.filter(id__in=cars_ids)
 
         cart = self.cart.copy()
@@ -33,7 +33,7 @@ class Cart(object):
         self.save()
 
     def save(self):
-        # сохраняем товар
+        # Сохраняем товар
         self.session.modified = True
 
     def remove(self, car):
@@ -44,10 +44,10 @@ class Cart(object):
             self.save()
 
     def get_total_price(self):
-        # получаем общую стоимость
+        # Получаем общую стоимость
         return sum(Decimal(item['price']) for item in self.cart.values())
 
     def clear(self):
-        # очищаем корзину в сессии
+        # Очищаем корзину в сессии
         del self.session[settings.CART_SESSION_ID]
         self.save()

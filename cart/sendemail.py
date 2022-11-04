@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 def send(user_email, user_name, choosen_cars):
     sender = settings.EMAIL_USER
     password = settings.EMAIL_PASSWORD
-    message = message_generator(user_email, user_name, choosen_cars)
+    message = message_generator(user_name, choosen_cars)
 
     server = smtplib.SMTP(settings.EMAIL_HOST, settings.EMAIL_PORT)
     server.starttls()
@@ -21,7 +21,7 @@ def send(user_email, user_name, choosen_cars):
         return f"{_ex}\nCheck your data {sender}"
 
 
-def message_generator(user_email, user_name, choosen_cars):
+def message_generator(user_name, choosen_cars):
     cars = ''
     for car in choosen_cars:
         cars += car + '\n'
