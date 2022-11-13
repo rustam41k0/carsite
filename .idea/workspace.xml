@@ -4,6 +4,7 @@
     <list default="true" id="5e72de27-e7d1-4657-a395-ccbdc7298589" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env_example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +215,7 @@
       <option name="presentableId" value="Default" />
       <updated>1667904350023</updated>
       <workItem from="1667904353523" duration="1982000" />
-      <workItem from="1668344613513" duration="3212000" />
+      <workItem from="1668344613513" duration="3646000" />
     </task>
     <servers />
   </component>
