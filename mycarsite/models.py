@@ -51,7 +51,11 @@ class Posts(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name="Имя")
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL", null=True)
+    slug = models.SlugField(max_length=255,
+                            unique=True,
+                            db_index=True,
+                            verbose_name="URL",
+                            null=True)
 
     class Meta:
         verbose_name_plural = 'Category'
@@ -66,7 +70,9 @@ class Category(models.Model):
 class Comments(models.Model):
     text = models.TextField(max_length=255, verbose_name="Текст комментария")
     author = ForeignKey(User, on_delete=models.PROTECT)
-    time_create = models.DateTimeField(auto_now_add=True, verbose_name="Время написания", null=True)
+    time_create = models.DateTimeField(auto_now_add=True,
+                                       verbose_name="Время написания",
+                                       null=True)
 
     class Meta:
         verbose_name_plural = 'Comments'
@@ -80,7 +86,11 @@ class Comments(models.Model):
 
 class Tags(models.Model):
     name = models.CharField(max_length=255, verbose_name="Имя")
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL", null=True)
+    slug = models.SlugField(max_length=255,
+                            unique=True,
+                            db_index=True,
+                            verbose_name="URL",
+                            null=True)
 
     class Meta:
         verbose_name_plural = 'Tags'

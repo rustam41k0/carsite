@@ -106,7 +106,6 @@ DATABASES = {
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-
 ]
 
 # Internationalization
@@ -140,7 +139,7 @@ CART_SESSION_ID = 'cart'
 #  Конфиг для функционала с почтой
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 587
-EMAIL_USER = 'sharipov.rustam18@yandex.ru'
-EMAIL_PASSWORD = 'vpdtpkpjwvgnofnv'
+EMAIL_USER = os.getenv('YANDEX_EMAIL_USER')
+EMAIL_PASSWORD = os.getenv('YANDEX_EMAIL_PASSWORD')
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = True

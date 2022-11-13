@@ -21,6 +21,7 @@ def send(user_email, user_name, choosen_cars):
         return f"{_ex}\nCheck your data {sender}"
 
 
+#  Герерация текста сообщения
 def message_generator(user_name, choosen_cars):
     cars = ''
     for car in choosen_cars:
